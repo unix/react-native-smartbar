@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react'
 import {StyleSheet, View, Text, Image, TouchableHighlight, Dimensions} from 'react-native'
+import Item from './item'
 
 export default class Tabbar extends Component {
 
@@ -11,11 +12,13 @@ export default class Tabbar extends Component {
 		...View.propTypes,
 		style: View.propTypes.style
 	}
+	static Item = Item
 	// 构造
 	constructor (props){
 		super(props)
 		// 初始状态
 		this.state = {}
+		this.children = '2'
 	}
 
 	/**
@@ -32,8 +35,34 @@ export default class Tabbar extends Component {
 		})
 	}
 
+	/**
+	 *
+	 * @param children {Array} children pages footer
+	 */
+	footerBar (children){
+		children.map((item, index) =>{
+			return (
+				<TouchableHighlight>
+					<View>
+						<Image source={item.props.icon}/>
+						<Text>1</Text>
+					</View>
+				</TouchableHighlight>
+			)
+		})
+	}
+
 	render (){
-		return null
+		return (
+			<View>
+				<View>
+					{/*{this.content}*/}
+				</View>
+				<View>
+					{this.footerBar(this.props.children)}
+				</View>
+			</View>
+		)
 	}
 
 
