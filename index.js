@@ -18,7 +18,8 @@ export default class Tabbar extends Component {
 		super(props)
 		// 初始状态
 		this.state = {
-			content: this.props.children
+			content: this.props.children,
+			contentActive: 0
 		}
 		this.children = '2'
 	}
@@ -29,16 +30,31 @@ export default class Tabbar extends Component {
 	 * @param children {Array} children pages footer
 	 */
 	footerBar (children){
+		/**
+		 *
+		 * @param done {function} item callback
+		 * @param index {number} onpress index
+		 */
+		const pressHandle = (done, index) =>{
+			this.setState({
+				contentActive: index
+			})
+			done&& done()
+		}
 		return children.map((item, index) =>{
+			const active = this.state.contentActive== index
+			const selected = item.props.selectedIcon? item.props.selectedIcon: item.props.icon
 			return (
 				<TouchableHighlight key={`tabbar-item${index}`}
 				                    style={styles.footerButton}
+				                    onPress={() => pressHandle(item.props.onPress, index)}
+				                    underlayColor={'transparent'}
 				>
 					<View>
-						<Image source={item.props.icon}
+						<Image source={active? selected: item.props.icon}
 						       style={styles.icon}
 						/>
-						<Text style={styles.text}>1</Text>
+						<Text style={styles.text}>我的</Text>
 					</View>
 				</TouchableHighlight>
 			)
@@ -50,9 +66,11 @@ export default class Tabbar extends Component {
 		return (
 			<View style={styles.body}>
 				<View style={styles.content}>
-					{this.state.content[0].props.children}
+					{this.state.content[this.state.contentActive].props.children}
 				</View>
-				<View style={styles.footer}>
+				<View style={styles.footer}
+				      {...this.props.style}
+				>
 					{this.footerBar(this.props.children)}
 				</View>
 			</View>
@@ -77,7 +95,9 @@ const styles = StyleSheet.create({
 	footer: {
 		width: width,
 		flexDirection: 'row',
-		backgroundColor: '#fff'
+		backgroundColor: '#fff',
+		borderTopWidth: 1,
+		borderTopColor: '#E5E5E5'
 	},
 	footerButton: {
 		flex: 1,
@@ -85,15 +105,16 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		paddingTop: 5,
 		paddingBottom: 5,
-		borderTopWidth: 1,
-		borderTopColor: '#E5E5E5'
 	},
 	icon: {
 		width: 22,
 		height: 22,
+		alignItems: 'center',
 	},
 	text: {
-		fontSize: 14,
-		color: '#9B9DB0'
+		fontSize: 12,
+		color: '#9B9DB0',
+		paddingTop: 3,
+		textAlign: 'center'
 	}
 })
