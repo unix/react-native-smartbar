@@ -10,7 +10,8 @@ export default class Tabbar extends Component {
 
 	static propTypes = {
 		...View.propTypes,
-		style: View.propTypes.style
+		style: View.propTypes.style,
+		activeColor: React.PropTypes.string,
 	}
 	static Item = Item
 	// 构造
@@ -19,7 +20,8 @@ export default class Tabbar extends Component {
 		// 初始状态
 		this.state = {
 			content: this.props.children,
-			contentActive: 0
+			contentActive: 0,
+			textActive: this.props.activeColor? this.props.activeColor: '#FE985B'
 		}
 		this.children = '2'
 	}
@@ -50,11 +52,14 @@ export default class Tabbar extends Component {
 				                    onPress={() => pressHandle(item.props.onPress, index)}
 				                    underlayColor={'transparent'}
 				>
-					<View>
+					<View style={styles.box}>
 						<Image source={active? selected: item.props.icon}
 						       style={styles.icon}
 						/>
-						<Text style={styles.text}>我的</Text>
+						<Text style={[styles.text, active&& {color: this.state.textActive}]}
+						>
+							{item.props.text}
+						</Text>
 					</View>
 				</TouchableHighlight>
 			)
@@ -92,6 +97,10 @@ const styles = StyleSheet.create({
 	content: {
 		flex: 1,
 	},
+	box: {
+		flex: 1,
+		alignItems: 'center',
+	},
 	footer: {
 		width: width,
 		flexDirection: 'row',
@@ -116,5 +125,5 @@ const styles = StyleSheet.create({
 		color: '#9B9DB0',
 		paddingTop: 3,
 		textAlign: 'center'
-	}
+	},
 })
