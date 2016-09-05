@@ -17,35 +17,28 @@ export default class Tabbar extends Component {
 	constructor (props){
 		super(props)
 		// 初始状态
-		this.state = {}
+		this.state = {
+			content: this.props.children
+		}
 		this.children = '2'
 	}
 
-	/**
-	 *
-	 * @param children {Array} children pages
-	 */
-	childrenView (children){
-		children.map((item, index) =>{
-			return (
-				<View key={`tabbar-item${index}`}>
-					{item}
-				</View>
-			)
-		})
-	}
 
 	/**
 	 *
 	 * @param children {Array} children pages footer
 	 */
 	footerBar (children){
-		children.map((item, index) =>{
+		return children.map((item, index) =>{
 			return (
-				<TouchableHighlight>
+				<TouchableHighlight key={`tabbar-item${index}`}
+				                    style={styles.footerButton}
+				>
 					<View>
-						<Image source={item.props.icon}/>
-						<Text>1</Text>
+						<Image source={item.props.icon}
+						       style={styles.icon}
+						/>
+						<Text style={styles.text}>1</Text>
 					</View>
 				</TouchableHighlight>
 			)
@@ -53,12 +46,13 @@ export default class Tabbar extends Component {
 	}
 
 	render (){
+		console.log(this.state.content);
 		return (
-			<View>
-				<View>
-					{/*{this.content}*/}
+			<View style={styles.body}>
+				<View style={styles.content}>
+					{this.state.content[0].props.children}
 				</View>
-				<View>
+				<View style={styles.footer}>
 					{this.footerBar(this.props.children)}
 				</View>
 			</View>
@@ -70,6 +64,36 @@ export default class Tabbar extends Component {
 
 
 }
+const {width} = Dimensions.get('window')
 const styles = StyleSheet.create({
-
+	body: {
+		flex: 1,
+		width: width,
+		overflow: 'hidden',
+	},
+	content: {
+		flex: 1,
+	},
+	footer: {
+		width: width,
+		flexDirection: 'row',
+		backgroundColor: '#fff'
+	},
+	footerButton: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		paddingTop: 5,
+		paddingBottom: 5,
+		borderTopWidth: 1,
+		borderTopColor: '#E5E5E5'
+	},
+	icon: {
+		width: 22,
+		height: 22,
+	},
+	text: {
+		fontSize: 14,
+		color: '#9B9DB0'
+	}
 })
