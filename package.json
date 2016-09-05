@@ -1,0 +1,25 @@
+{
+  "name": "react-native-smartbar",
+  "version": "0.0.1",
+  "description": "tabbar react-native android ios ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://WittBulter@github.com/WittBulter/react-native-smartbar.git"
+  },
+  "keywords": [
+    "tabbar",
+    "react-native",
+    "android",
+    "ios"
+  ],
+  "author": "WittBulter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WittBulter/react-native-smartbar/issues"
+  },
+  "homepage": "https://github.com/WittBulter/react-native-smartbar#readme"
+}
