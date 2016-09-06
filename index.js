@@ -43,25 +43,53 @@ export default class Tabbar extends Component {
 			})
 			done&& done()
 		}
+
+		const textBox = () =>{
+		}
 		return children.map((item, index) =>{
 			const active = this.state.contentActive== index
 			const selected = item.props.selectedIcon? item.props.selectedIcon: item.props.icon
+			const box = (text, icon) =>{
+				if (!text){
+					return (
+						<View style={styles.box}>
+							<Image source={active? selected: item.props.icon}
+							       style={styles.icon}
+							       {...item.props.iconStyle}
+							/>
+						</View>
+					)
+				}
+				if (!icon){
+					return (
+						<View style={styles.box}>
+							<Text style={[styles.onlyText, active&& {color: this.state.textActive}, {...item.props.textStyle}]}
+							>
+								{text}
+							</Text>
+						</View>
+					)
+				}
+				return (
+					<View style={styles.box}>
+						<Image source={icon}
+						       style={styles.icon}
+						       {...item.props.iconStyle}
+						/>
+						<Text style={[styles.text, active&& {color: this.state.textActive}, {...item.props.textStyle}]}
+						>
+							{text}
+						</Text>
+					</View>
+				)
+			}
 			return (
 				<TouchableHighlight key={`tabbar-item${index}`}
 				                    style={styles.footerButton}
 				                    onPress={() => pressHandle(item.props.onPress, index)}
 				                    underlayColor={'transparent'}
 				>
-					<View style={styles.box}>
-						<Image source={active? selected: item.props.icon}
-						       style={styles.icon}
-						       {...item.props.iconStyle}
-						/>
-						<Text style={[styles.text, active&& {color: this.state.textActive}, {...item.props.textStyle}]}
-						>
-							{item.props.text}
-						</Text>
-					</View>
+					{box(item.props.text, active? selected: item.props.icon)}
 				</TouchableHighlight>
 			)
 		})
@@ -127,6 +155,7 @@ const styles = StyleSheet.create({
 	box: {
 		flex: 1,
 		alignItems: 'center',
+		justifyContent: 'center',
 	},
 	footer: {
 		width: width,
@@ -147,10 +176,21 @@ const styles = StyleSheet.create({
 		height: 22,
 		alignItems: 'center',
 	},
+	onlyIcon: {
+		width: 45,
+		height: 45,
+		alignItems: 'center',
+	},
 	text: {
 		fontSize: 12,
 		color: '#9B9DB0',
 		paddingTop: 3,
 		textAlign: 'center'
+	},
+	onlyText: {
+		fontSize: 16,
+		color: '#9B9DB0',
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
 })
