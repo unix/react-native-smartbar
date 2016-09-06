@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react'
-import {StyleSheet, View, Text, Image, TouchableHighlight, Dimensions} from 'react-native'
+import {StyleSheet, View, Text, Image, TouchableHighlight, Dimensions, Animated, Easing} from 'react-native'
 import Item from './item'
 
 export default class Tabbar extends Component {
@@ -20,10 +20,10 @@ export default class Tabbar extends Component {
 		// 初始状态
 		this.state = {
 			content: this.props.children,
-			contentActive: 0,
-			textActive: this.props.activeColor? this.props.activeColor: '#FE985B'
+			contentActive: this.props.index? this.props.index:0,
+			textActive: this.props.activeColor? this.props.activeColor: '#FE985B',
+			footerMarginBottom: new Animated.Value(0),
 		}
-		this.children = '2'
 	}
 
 
@@ -55,8 +55,9 @@ export default class Tabbar extends Component {
 					<View style={styles.box}>
 						<Image source={active? selected: item.props.icon}
 						       style={styles.icon}
+						       {...item.props.iconStyle}
 						/>
-						<Text style={[styles.text, active&& {color: this.state.textActive}]}
+						<Text style={[styles.text, active&& {color: this.state.textActive}, {...item.props.textStyle}]}
 						>
 							{item.props.text}
 						</Text>
@@ -67,24 +68,50 @@ export default class Tabbar extends Component {
 	}
 
 	render (){
-		console.log(this.state.content);
 		return (
 			<View style={styles.body}>
 				<View style={styles.content}>
 					{this.state.content[this.state.contentActive].props.children}
 				</View>
-				<View style={styles.footer}
+				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom}]}
 				      {...this.props.style}
 				>
 					{this.footerBar(this.props.children)}
-				</View>
+				</Animated.View>
 			</View>
 		)
 	}
 
+	/**
+	 *
+	 * @param t [{bool}] footBar show&hide
+	 */
+	toggleBar (t = this.state.footerMarginBottom._value == 0){
+		console.log(t);
+		Animated.timing(
+			this.state.footerMarginBottom,{
+				toValue: t? -85: 0,
+				duration: 190,
+				easing: Easing.linear
+			}
+		).start()
+	}
+
+	/**
+	 *
+	 * @param index [{number}] screen index
+	 */
+	jumpToIndex (index){
+		this.setState({
+			contentActive: index
+		})
+	}
 
 
-
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.index != undefined) this.jumpToIndex(nextProps.index)
+		if (nextProps.toggleBar != undefined) this.toggleBar(!nextProps.toggleBar)
+	}
 
 }
 const {width} = Dimensions.get('window')
