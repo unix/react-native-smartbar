@@ -7,17 +7,17 @@ Maybe this is the best tabbar
 
     ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo.gif?imageView2/1/w/140/h/280)
 
-- toggleBar
+- toggle the bar
 
     ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-2.gif?imageView2/1/w/140/h/280)
 
 - only image
 
-    do not fill in the text:
+    If you just want to show the image, do not fill in [text(TabBar.Item)]
 ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-3.png?imageView1/1/w/500/h/110)
 - only text
 
-    do not fill in the image:
+    If you just want to show the text, do not fill in [image(TabBar.Item)]
  ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-4.png?imageView1/1/w/500/h/110)
 
 
@@ -108,7 +108,9 @@ Maybe this is the best tabbar
         
     ```
 
-3. Any style
+3. Customize
+
+    You can customize any style !
     ```javascript
        <TabBar
               // ...
