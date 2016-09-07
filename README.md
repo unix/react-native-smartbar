@@ -4,8 +4,11 @@
 
 - DEMO
 
-![Witt Bulter](https://github.com/WittBulter/react-native-smartbar/blob/master/example/image/demo.gif)
+![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo.gif?imageView2/1/w/125/h/200)
 
+- toggleBar
+
+![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-2.gif?imageView2/1/w/125/h/200)
 
   
 >### **帮助**      
