@@ -44,29 +44,88 @@
 
 
 >### **Features**   
-    1. Show and hide
+
+1. Show and hide
     
-        ``` javascript
-            <TabBar
-                    ...
-                    ref={tabbar=> this.tabbar=tabbar}
-            >
-            // toggle 
-            this.tabbar.toggleBar()
-            // OR set bool
-            this.tabbar.toggleBar(true)
-            this.tabbar.toggleBar(false)
-        ```
+    ```javascript
+        <TabBar
+               // ...
+                ref={tabbar=> this.tabbar=tabbar}
+        >
+     
+        // toggle 
+        this.tabbar.toggleBar()
+     
+        // OR set bool
+        this.tabbar.toggleBar(true)
+        this.tabbar.toggleBar(false)
+    ```
+    
+    OR ...
+    
+    ```javascript
+       <TabBar
+              // ...
+               toggleBar={this.state.toggle}
+       >
+    
+       // toggle 
+       componentWillReceiveProps (nextProps){
+       		this.setState({
+       			toggle: nextProps.toggle
+       		})
+       }
         
-        Another way
-        ```javascript
-            
-        ```
+    ```
+
+2. Jump 
+    ```javascript
+        <TabBar
+               // ...
+                ref={tabbar=> this.tabbar=tabbar}
+        >
+     
+        // jump
+        this.tabbar.jumpToIndex(index)
+     
+    ```
+    OR ...
+    
+    ```javascript
+       <TabBar
+              // ...
+               index={this.state.index}
+       >
+    
+       // jump 
+       componentWillReceiveProps (nextProps){
+            this.setState({
+                index: nextProps.index
+            })
+       }
+        
+    ```
+
+3. Any style
+    ```javascript
+       <TabBar
+              // ...
+               style={{...}}
+       >
+           <TabBar.Item
+               // ...
+               style={{...}}
+            >
+               <Index />
+            </TabBar.Item>    
+       </TabBar>
+        
+    ```
 
 
->### **Example**   
+>### **Example**  
+ 
     see /example
-
 
 >### **Support**      
 
