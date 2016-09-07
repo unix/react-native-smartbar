@@ -14,8 +14,8 @@ export default class Me extends Component {
 	}
 	render (){
 		return (
-			<View>
-				<Text>me page</Text>
+			<View style={{flex: 1, justifyContent: 'center', alignSelf: 'center'}}>
+				<Text style={{fontSize: 25}}>me page</Text>
 			</View>
 		)
 	}

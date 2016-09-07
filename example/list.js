@@ -14,8 +14,8 @@ export default class List extends Component {
 	}
 	render (){
 		return (
-			<View>
-				<Text>list page</Text>
+			<View style={{flex: 1, justifyContent: 'center', alignSelf: 'center'}}>
+				<Text style={{fontSize: 25}}>list page</Text>
 			</View>
 		)
 	}

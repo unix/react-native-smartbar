@@ -2,10 +2,6 @@
  * Created by WittBulter on 16/9/7.
  */
 
-/**
- * Created by WittBulter on 16/5/21.
- */
-
 import React, {Component} from 'react'
 import {View} from 'react-native'
 
@@ -39,7 +35,7 @@ export default class Tabbar extends Component {
 					selectedIcon={require('../../img/ios/dcc_home_on@2x.png')}
 					text={'Index'}
 				>
-					<Activity />
+					<Index />
 				</TabBar.Item>
 
 				<TabBar.Item
@@ -55,7 +51,7 @@ export default class Tabbar extends Component {
 					selectedIcon={require('../../img/ios/dcc_home_my_on@2x.png')}
 					text={'Me'}
 				>
-					<Personal />
+					<Me />
 				</TabBar.Item>
 			</TabBar>
 		)

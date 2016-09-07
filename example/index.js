@@ -14,8 +14,8 @@ export default class Index extends Component {
 	}
 	render (){
 		return (
-			<View>
-				<Text>index page</Text>
+			<View style={{flex: 1, justifyContent: 'center', alignSelf: 'center'}}>
+				<Text style={{fontSize: 25}}>index page</Text>
 			</View>
 		)
 	}
