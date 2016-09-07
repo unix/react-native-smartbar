@@ -1,200 +1,22 @@
 /**
- * Created by WittBulter on 16/9/5.
+ * Created by WittBulter on 16/9/7.
  */
 
 import React, {Component} from 'react'
-import {StyleSheet, View, Text, Image, TouchableHighlight, Dimensions, Animated, Easing} from 'react-native'
-import Item from './item'
+import {View, Text} from 'react-native'
 
-export default class Tabbar extends Component {
-
-	static propTypes = {
-		...View.propTypes,
-		style: View.propTypes.style,
-		activeColor: React.PropTypes.string,
-	}
-	static Item = Item
+export default class Index extends Component {
 	// 构造
 	constructor (props){
 		super(props)
 		// 初始状态
-		this.state = {
-			content: this.props.children,
-			contentActive: this.props.index? this.props.index:0,
-			textActive: this.props.activeColor? this.props.activeColor: '#FE985B',
-			footerMarginBottom: new Animated.Value(0),
-		}
+		this.state = {}
 	}
-
-
-	/**
-	 *
-	 * @param children {Array} children pages footer
-	 */
-	footerBar (children){
-		/**
-		 *
-		 * @param done {function} item callback
-		 * @param index {number} onpress index
-		 */
-		const pressHandle = (done, index) =>{
-			this.setState({
-				contentActive: index
-			})
-			done&& done()
-		}
-
-		const textBox = () =>{
-		}
-		return children.map((item, index) =>{
-			const active = this.state.contentActive== index
-			const selected = item.props.selectedIcon? item.props.selectedIcon: item.props.icon
-			const box = (text, icon) =>{
-				if (!text){
-					return (
-						<View style={styles.box}>
-							<Image source={active? selected: item.props.icon}
-							       style={styles.onlyIcon}
-							       {...item.props.iconStyle}
-							/>
-						</View>
-					)
-				}
-				if (!icon){
-					return (
-						<View style={styles.box}>
-							<Text style={[styles.onlyText, active&& {color: this.state.textActive}, {...item.props.textStyle}]}
-							>
-								{text}
-							</Text>
-						</View>
-					)
-				}
-				return (
-					<View style={styles.box}>
-						<Image source={icon}
-						       style={styles.icon}
-						       {...item.props.iconStyle}
-						/>
-						<Text style={[styles.text, active&& {color: this.state.textActive}, {...item.props.textStyle}]}
-						>
-							{text}
-						</Text>
-					</View>
-				)
-			}
-			return (
-				<TouchableHighlight key={`tabbar-item${index}`}
-				                    style={styles.footerButton}
-				                    onPress={() => pressHandle(item.props.onPress, index)}
-				                    underlayColor={'transparent'}
-				>
-					{box(item.props.text, active? selected: item.props.icon)}
-				</TouchableHighlight>
-			)
-		})
-	}
-
 	render (){
 		return (
-			<View style={styles.body}>
-				<View style={styles.content}>
-					{this.state.content[this.state.contentActive].props.children}
-				</View>
-				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom}]}
-				      {...this.props.style}
-				>
-					{this.footerBar(this.props.children)}
-				</Animated.View>
+			<View style={{flex: 1, justifyContent: 'center', alignSelf: 'center'}}>
+				<Text style={{fontSize: 25}}>index page</Text>
 			</View>
 		)
 	}
-
-	/**
-	 *
-	 * @param t [{bool}] footBar show&hide
-	 */
-	toggleBar (t = this.state.footerMarginBottom._value == 0){
-		console.log(t);
-		Animated.timing(
-			this.state.footerMarginBottom,{
-				toValue: t? -85: 0,
-				duration: 190,
-				easing: Easing.linear
-			}
-		).start()
-	}
-
-	/**
-	 *
-	 * @param index [{number}] screen index
-	 */
-	jumpToIndex (index){
-		this.setState({
-			contentActive: index
-		})
-	}
-
-
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.index != undefined) this.jumpToIndex(nextProps.index)
-		if (nextProps.toggleBar != undefined) this.toggleBar(!nextProps.toggleBar)
-	}
-
 }
-const {width} = Dimensions.get('window')
-const styles = StyleSheet.create({
-	body: {
-		flex: 1,
-		width: width,
-		overflow: 'hidden',
-	},
-	content: {
-		flex: 1,
-	},
-	box: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	footer: {
-		width: width,
-		flexDirection: 'row',
-		backgroundColor: '#fff',
-		borderTopWidth: 1,
-		borderTopColor: '#E5E5E5'
-	},
-	footerButton: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		paddingTop: 5,
-		paddingBottom: 5,
-	},
-	icon: {
-		width: 22,
-		height: 22,
-		alignItems: 'center',
-	},
-	onlyIcon: {
-		width: 27,
-		height: 27,
-		alignItems: 'center',
-		marginTop: 5,
-		marginBottom: 5,
-	},
-	text: {
-		fontSize: 12,
-		color: '#9B9DB0',
-		paddingTop: 3,
-		textAlign: 'center'
-	},
-	onlyText: {
-		fontSize: 16,
-		color: '#9B9DB0',
-		alignItems: 'center',
-		justifyContent: 'center',
-		marginTop: 8,
-		marginBottom: 8,
-	},
-})

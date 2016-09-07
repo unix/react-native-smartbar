@@ -54,7 +54,7 @@ export default class Tabbar extends Component {
 					return (
 						<View style={styles.box}>
 							<Image source={active? selected: item.props.icon}
-							       style={styles.icon}
+							       style={styles.onlyIcon}
 							       {...item.props.iconStyle}
 							/>
 						</View>
@@ -177,9 +177,11 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	onlyIcon: {
-		width: 45,
-		height: 45,
+		width: 27,
+		height: 27,
 		alignItems: 'center',
+		marginTop: 5,
+		marginBottom: 5,
 	},
 	text: {
 		fontSize: 12,
@@ -192,5 +194,7 @@ const styles = StyleSheet.create({
 		color: '#9B9DB0',
 		alignItems: 'center',
 		justifyContent: 'center',
+		marginTop: 8,
+		marginBottom: 8,
 	},
 })
