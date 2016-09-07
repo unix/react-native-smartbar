@@ -4,7 +4,7 @@
 
 - DEMO
 
-[![Witt Bulter](./example/image/demo.gif)]
+![Witt Bulter](https://github.com/WittBulter/react-native-smartbar/blob/master/example/image/demo.gif)
 
 
   
