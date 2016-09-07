@@ -4,11 +4,11 @@
 
 - DEMO
 
-![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo.gif?imageView2/1/w/140/h/280)
+    ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo.gif?imageView2/1/w/140/h/280)
 
 - toggleBar
 
-![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-2.gif?imageView2/1/w/140/h/280)
+    ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-2.gif?imageView2/1/w/140/h/280)
 
 - only image
 
@@ -18,6 +18,9 @@
 
     do not fill in the image:
  ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-4.png?imageView1/1/w/500/h/110)
+
+
+
 >### **documentation**    
 - TabBar
 
@@ -38,9 +41,12 @@
 | text         | string | false    | default text     | text={'List'}                     |
 | style        | style  | false    | footer bar style | style={{height: 500}}             |
 
+
+
 >### **Features**   
     1. Show and hide
-        ```javascript
+    
+        ``` javascript
             <TabBar
                     ...
                     ref={tabbar=> this.tabbar=tabbar}
@@ -57,8 +63,10 @@
             
         ```
 
+
 >### **Example**   
     see /example
+
 
 >### **Support**      
 
