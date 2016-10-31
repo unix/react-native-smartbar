@@ -12,6 +12,7 @@ export default class Tabbar extends Component {
 		...View.propTypes,
 		style: View.propTypes.style,
 		activeColor: React.PropTypes.string,
+		height: React.PropTypes.number,
 	}
 	static Item = Item
 	// 构造
@@ -21,6 +22,7 @@ export default class Tabbar extends Component {
 		this.state = {
 			content: this.props.children,
 			contentActive: this.props.index? this.props.index:0,
+			contentHeight: this.props.height? this.props.height: 45,
 			textActive: this.props.activeColor? this.props.activeColor: '#FE985B',
 			footerMarginBottom: new Animated.Value(0),
 		}
@@ -101,8 +103,8 @@ export default class Tabbar extends Component {
 				<View style={styles.content}>
 					{this.state.content[this.state.contentActive].props.children}
 				</View>
-				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom}]}
-				      {...this.props.style}
+				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom}, {height: this.state.contentHeight}]}
+				               {...this.props.style}
 				>
 					{this.footerBar(this.props.children)}
 				</Animated.View>
@@ -115,7 +117,6 @@ export default class Tabbar extends Component {
 	 * @param t [{bool}] footBar show&hide
 	 */
 	toggleBar (t = this.state.footerMarginBottom._value == 0){
-		console.log(t);
 		Animated.timing(
 			this.state.footerMarginBottom,{
 				toValue: t? -85: 0,
@@ -142,12 +143,14 @@ export default class Tabbar extends Component {
 	}
 
 }
-const {width} = Dimensions.get('window')
+const {width, height} = Dimensions.get('window')
 const styles = StyleSheet.create({
 	body: {
 		flex: 1,
 		width: width,
 		overflow: 'hidden',
+		height: height,
+		flexDirection: 'column'
 	},
 	content: {
 		flex: 1,
@@ -162,7 +165,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		backgroundColor: '#fff',
 		borderTopWidth: 1,
-		borderTopColor: '#E5E5E5'
+		borderTopColor: '#E5E5E5',
 	},
 	footerButton: {
 		flex: 1,
