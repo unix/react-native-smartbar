@@ -30,6 +30,7 @@ Maybe this is the best tabbar
 | ----------- | ------ | -------- | ---------------------------- | ----------------------------- |
 | activeColor | string | false    | active color                 | activeColor={'#FE985B'}       |
 | toggleBar   | bool   | false    | hide and show                | toggleBar={this.state.toggle} |
+| height      | number | false    | default value = 45px         | height={50}                   |
 | index       | number | false    | jump index and default index | index={this.state.index}      |
 | style       | style  | false    | footer bar style             | style={{height: 500}}         |
 
