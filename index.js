@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react'
-import {StyleSheet, View, Text, Image, TouchableHighlight, Dimensions, Animated, Easing} from 'react-native'
+import {StyleSheet, View, Text, Image, TouchableHighlight, Dimensions, Animated, Easing, Platform} from 'react-native'
 import Item from './item'
 
 export default class Tabbar extends Component {
@@ -103,7 +103,7 @@ export default class Tabbar extends Component {
 				<View style={styles.content}>
 					{this.state.content[this.state.contentActive].props.children}
 				</View>
-				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom}, {height: this.state.contentHeight}]}
+				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom._value == 0?(Platform.OS == 'ios'?0:20):this.state.footerMarginBottom}, {height: this.state.contentHeight}]}
 				               {...this.props.style}
 				>
 					{this.footerBar(this.props.children)}
