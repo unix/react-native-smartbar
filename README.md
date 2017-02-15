@@ -2,8 +2,10 @@
 Maybe this is the best tabbar. [中文](https://github.com/WittBulter/react-native-smartbar/blob/master/README_CN.md)
 
 >### **Install**  
-```apple js
 
+```sh
+* install with npm
+sudo npm i react-native-smartbar --save
 ```
 
 >### **Get Started**  

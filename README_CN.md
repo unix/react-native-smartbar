@@ -1,6 +1,15 @@
 # `react-native-smartbar`
 可能是最好的tabbar。[English](https://github.com/WittBulter/react-native-smartbar/blob/master/README.md)
 
+
+>### **下载**  
+
+```sh
+* 从npm库下载
+sudo npm i react-native-smartbar --save
+```
+
+
 >### **开始**  
 
 - 效果展示
