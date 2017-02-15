@@ -24,7 +24,7 @@ export default class Tabbar extends Component {
 			contentActive: this.props.index? this.props.index:0,
 			contentHeight: this.props.height? this.props.height: 45,
 			textActive: this.props.activeColor? this.props.activeColor: '#FE985B',
-			footerMarginBottom: new Animated.Value(0),
+			footerMarginBottom: new Animated.Value(Platform.OS == 'ios'? 0:20),
 		}
 	}
 
@@ -103,7 +103,7 @@ export default class Tabbar extends Component {
 				<View style={styles.content}>
 					{this.state.content[this.state.contentActive].props.children}
 				</View>
-				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom._value == 0?(Platform.OS == 'ios'?0:20):this.state.footerMarginBottom}, {height: this.state.contentHeight}]}
+				<Animated.View style={[styles.footer, {marginBottom: this.state.footerMarginBottom}, {height: this.state.contentHeight}]}
 				               {...this.props.style}
 				>
 					{this.footerBar(this.props.children)}
@@ -116,10 +116,10 @@ export default class Tabbar extends Component {
 	 *
 	 * @param t [{bool}] footBar show&hide
 	 */
-	toggleBar (t = this.state.footerMarginBottom._value == 0){
+	toggleBar (t = (this.state.footerMarginBottom._value !== -85 )){
 		Animated.timing(
 			this.state.footerMarginBottom,{
-				toValue: t? -85: 0,
+				toValue: t? -85: (Platform.OS == 'ios'? 0:20),
 				duration: 190,
 				easing: Easing.linear
 			}
@@ -175,8 +175,8 @@ const styles = StyleSheet.create({
 		paddingBottom: 5,
 	},
 	icon: {
-		width: 22,
-		height: 22,
+		width: Platform.OS == 'ios'?22:18,
+		height: Platform.OS == 'ios'?22:18,
 		alignItems: 'center',
 	},
 	onlyIcon: {
