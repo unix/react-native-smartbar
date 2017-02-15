@@ -1,59 +1,54 @@
 # `react-native-smartbar`
-Maybe this is the best tabbar
+可能是最好的tabbar。
 
->### **Install**  
-```apple js
+>### **开始**  
 
-```
-
->### **Get Started**  
-
-- DEMO
+- 效果展示
 
     ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo.gif?imageView2/1/w/140/h/280)
 
-- toggle the bar
+- 显示/隐藏
 
     ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-2.gif?imageView2/1/w/140/h/280)
 
-- only image
+- 只显示图片
 
-    If you just want to show the image, do not fill in [text(TabBar.Item)]
+    如果你希望只显示图片, 忽略此项属性即可： [text(TabBar.Item)]
 ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-3.png?imageView1/1/w/500/h/110)
-- only text
+- 只显示文字
 
-    If you just want to show the text, do not fill in [image(TabBar.Item)]
+    如果你希望只显示文字, 忽略此项属性即可： [image(TabBar.Item)]
  ![Witt Bulter](http://obqqxnnm4.bkt.clouddn.com/demo-4.png?imageView1/1/w/500/h/110)
 
 
 
->### **documentation**    
+>### **文档**    
 
-- TabBar
+- TabBar(底部bar)
 
-| attribute   | type   | required | description                  | example                       |
+| 属性   | 类型   | 必须 | 描述                  | 例子                       |
 | ----------- | ------ | -------- | ---------------------------- | ----------------------------- |
-| activeColor | string | false    | active color                 | activeColor={'#FE985B'}       |
-| toggleBar   | bool   | false    | hide and show                | toggleBar={this.state.toggle} |
-| height      | number | false    | default value = 45px         | height={50}                   |
-| index       | number | false    | jump index and default index | index={this.state.index}      |
-| style       | style  | false    | footer bar style             | style={{height: 500}}         |
+| activeColor | string | 否    | 激活颜色                 | activeColor={'#FE985B'}       |
+| toggleBar   | bool   | 否    | 显示与隐藏                | toggleBar={this.state.toggle} |
+| height      | number | 否    | 高度，默认高度45px         | height={50}                   |
+| index       | number | 否    | 跳转至指定路由 | index={this.state.index}      |
+| style       | style  | 否    | 自定义样式             | style={{height: 500}}         |
 
 
-- TabBar.Item
+- TabBar.Item(底部bar的每一个子项)
 
-| attribute    | type   | required | description      | example                           |
+| 属性    | 类型   | 必须 | 描述      | 例子                           |
 | ------------ | ------ | -------- | ---------------- | --------------------------------- |
-| icon         | image  | false    | default icon     | icon={require('./img/abc.png')}   |
-| selectedIcon | image  | false    | active icon      | icon={require('./img/abc_2.png')} |
-| text         | string | false    | default text     | text={'List'}                     |
-| style        | style  | false    | footer bar style | style={{height: 500}}             |
+| icon         | image  | 否    | 默认图标(图片)     | icon={require('./img/abc.png')}   |
+| selectedIcon | image  | 否    | 激活时图标(图片)     | icon={require('./img/abc_2.png')} |
+| text         | string | 否    | 默认文字     | text={'List'}                     |
+| style        | style  | 否    | 自定义样式 | style={{height: 500}}             |
 
 
 
->### **Features**   
+>### **特点**   
 
-1. Show and hide
+1. 简单敏捷的控制显示/隐藏
     
     ```javascript
         <TabBar
@@ -61,15 +56,15 @@ Maybe this is the best tabbar
                 ref={tabbar=> this.tabbar=tabbar}
         >
      
-        // toggle 
+        // 使用句柄的函数控制 
         this.tabbar.toggleBar()
      
-        // OR set bool
+        // 或是设置一个布尔值
         this.tabbar.toggleBar(true)
         this.tabbar.toggleBar(false)
     ```
     
-    OR ...
+    或者使用属性的方式：
     
     ```javascript
        <TabBar
@@ -86,18 +81,19 @@ Maybe this is the best tabbar
         
     ```
 
-2. Jump 
+2.  标准的指定路由跳转方式：
     ```javascript
         <TabBar
                // ...
                 ref={tabbar=> this.tabbar=tabbar}
         >
      
-        // jump
+        // 使用句柄的函数跳转
         this.tabbar.jumpToIndex(index)
      
     ```
-    OR ...
+    
+    或者通过设置属性的方式跳转：
     
     ```javascript
        <TabBar
@@ -114,9 +110,9 @@ Maybe this is the best tabbar
         
     ```
 
-3. Customize
+3. 可扩展的样式：
 
-    You can customize any style !
+    你可以为tabbar自定义任何样式：
     ```javascript
        <TabBar
               // ...
@@ -133,11 +129,11 @@ Maybe this is the best tabbar
     ```
 
 
->### **Example**  
+>### **使用例子**  
  
-    see /example
+    参见 /example
 
->### **Support**      
+>### **支持**      
 
 - MAIL   `(# = @) => nanazuimeng123#gmail.com`
 - [ISSUES](https://github.com/WittBulter/react-native-smartbar/issues)
