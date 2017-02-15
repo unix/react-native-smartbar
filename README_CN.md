@@ -1,5 +1,5 @@
 # `react-native-smartbar`
-可能是最好的tabbar。
+可能是最好的tabbar。[English](https://github.com/WittBulter/react-native-smartbar/blob/master/README.md)
 
 >### **开始**  
 
