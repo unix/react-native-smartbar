@@ -24,7 +24,7 @@ export default class Tabbar extends Component {
 			contentActive: this.props.index? this.props.index:0,
 			contentHeight: this.props.height? this.props.height: 45,
 			textActive: this.props.activeColor? this.props.activeColor: '#FE985B',
-			footerMarginBottom: new Animated.Value(Platform.OS == 'ios'? 0:20),
+			footerMarginBottom: new Animated.Value(0),
 		}
 	}
 
@@ -116,10 +116,10 @@ export default class Tabbar extends Component {
 	 *
 	 * @param t [{bool}] footBar show&hide
 	 */
-	toggleBar (t = (this.state.footerMarginBottom._value !== -85 )){
+	toggleBar (t = (this.state.footerMarginBottom._value == 0 )){
 		Animated.timing(
 			this.state.footerMarginBottom,{
-				toValue: t? -85: (Platform.OS == 'ios'? 0:20),
+				toValue: t? -85: 0,
 				duration: 190,
 				easing: Easing.linear
 			}
