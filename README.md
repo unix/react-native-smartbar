@@ -62,7 +62,8 @@ sudo npm i react-native-smartbar --save
                // ...
                 ref={tabbar=> this.tabbar=tabbar}
         >
-     
+
+        // you can pass the handle to the next page
         // toggle 
         this.tabbar.toggleBar()
      
@@ -74,6 +75,7 @@ sudo npm i react-native-smartbar --save
     OR ...
     
     ```javascript
+    // use redux
        <TabBar
               // ...
                toggleBar={this.state.toggle}

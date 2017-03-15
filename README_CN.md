@@ -64,8 +64,9 @@ sudo npm i react-native-smartbar --save
                // ...
                 ref={tabbar=> this.tabbar=tabbar}
         >
-     
-        // 使用句柄的函数控制 
+
+        // 你可以将 [this.tabbar] 传入至下个页面，参考react通信方式
+        // 函数控制
         this.tabbar.toggleBar()
      
         // 或是设置一个布尔值
@@ -80,7 +81,8 @@ sudo npm i react-native-smartbar --save
               // ...
                toggleBar={this.state.toggle}
        >
-    
+
+       // 使用redux的方式
        // toggle 
        componentWillReceiveProps (nextProps){
        		this.setState({
