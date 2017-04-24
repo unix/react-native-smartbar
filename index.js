@@ -146,7 +146,7 @@ export default class Tabbar extends Component {
 const {width, height} = Dimensions.get('window')
 const styles = StyleSheet.create({
 	body: {
-		flex: 1,
+		flexGrow: 1,
 		width: width,
 		overflow: 'hidden',
 		height: height,
