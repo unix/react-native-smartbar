@@ -1,6 +1,6 @@
 {
   "name": "react-native-smartbar",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "tabbar react-native android ios ",
   "main": "index.js",
   "scripts": {
